@@ -1,0 +1,957 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20243.24.1112.0850                               -->
+<workbook original-version='18.1' source-build='2024.3.1 (20243.24.1112.0850)' source-platform='mac' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AnimationOnByDefault />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
+    <SheetIdentifierTracking />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='VANGUARD' inline='true' name='federated.15chz0t057kni115xhj7q1wopg56' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='df_web_data_combinado_limpio' name='textscan.1hqrn431xddx201ccuv4d17usqin'>
+            <connection class='textscan' directory='/Users/monzon8/Documents/Ironhack/PROYECTOS/05_EDA/vanguard-ab-test/02_DATA_LIMPIO' filename='df_web_data_combinado_limpio.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation type='collection'>
+          <relation connection='textscan.1hqrn431xddx201ccuv4d17usqin' name='df_web_data_combinado_limpio.csv' table='[df_web_data_combinado_limpio#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='es_ES' separator=','>
+              <column datatype='integer' name='client_id' ordinal='0' />
+              <column datatype='string' name='visitor_id' ordinal='1' />
+              <column datatype='string' name='visit_id' ordinal='2' />
+              <column datatype='string' name='process_step' ordinal='3' />
+              <column datatype='datetime' name='date_time' ordinal='4' />
+            </columns>
+          </relation>
+          <relation connection='textscan.1hqrn431xddx201ccuv4d17usqin' name='device_change_steps.csv' table='[device_change_steps#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='es_ES' separator=','>
+              <column datatype='integer' name='client_id' ordinal='0' />
+              <column datatype='string' name='visitor_id' ordinal='1' />
+              <column datatype='string' name='visit_id' ordinal='2' />
+              <column datatype='string' name='process_step' ordinal='3' />
+              <column datatype='datetime' name='date_time' ordinal='4' />
+              <column datatype='boolean' name='device_change' ordinal='5' />
+            </columns>
+          </relation>
+          <relation connection='textscan.1hqrn431xddx201ccuv4d17usqin' name='df_final_expanded_limpio.csv' table='[df_final_expanded_limpio#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='es_ES'>
+              <column datatype='integer' name='client_id' ordinal='0' />
+              <column datatype='integer' name='clnt_tenure_yr' ordinal='1' />
+              <column datatype='integer' name='clnt_tenure_mnth' ordinal='2' />
+              <column datatype='integer' name='clnt_age' ordinal='3' />
+              <column datatype='string' name='gendr' ordinal='4' />
+              <column datatype='integer' name='num_accts' ordinal='5' />
+              <column datatype='string' name='bal' ordinal='6' />
+              <column datatype='integer' name='calls_6_mnth' ordinal='7' />
+              <column datatype='integer' name='logons_6_mnth' ordinal='8' />
+              <column datatype='string' name='Variation' ordinal='9' />
+              <column datatype='integer' name='total_tenure_months' ordinal='10' />
+            </columns>
+          </relation>
+          <relation connection='textscan.1hqrn431xddx201ccuv4d17usqin' name='step_change_counts.csv' table='[step_change_counts#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='es_ES' separator=','>
+              <column datatype='string' name='process_step' ordinal='0' />
+              <column datatype='integer' name='counts' ordinal='1' />
+            </columns>
+          </relation>
+        </relation>
+        <cols>
+          <map key='[Variation]' value='[df_final_expanded_limpio.csv].[Variation]' />
+          <map key='[bal]' value='[df_final_expanded_limpio.csv].[bal]' />
+          <map key='[calls_6_mnth]' value='[df_final_expanded_limpio.csv].[calls_6_mnth]' />
+          <map key='[client_id (device_change_steps.csv)]' value='[device_change_steps.csv].[client_id]' />
+          <map key='[client_id (df_final_expanded_limpio.csv)]' value='[df_final_expanded_limpio.csv].[client_id]' />
+          <map key='[client_id]' value='[df_web_data_combinado_limpio.csv].[client_id]' />
+          <map key='[clnt_age]' value='[df_final_expanded_limpio.csv].[clnt_age]' />
+          <map key='[clnt_tenure_mnth]' value='[df_final_expanded_limpio.csv].[clnt_tenure_mnth]' />
+          <map key='[clnt_tenure_yr]' value='[df_final_expanded_limpio.csv].[clnt_tenure_yr]' />
+          <map key='[counts]' value='[step_change_counts.csv].[counts]' />
+          <map key='[date_time (device_change_steps.csv)]' value='[device_change_steps.csv].[date_time]' />
+          <map key='[date_time]' value='[df_web_data_combinado_limpio.csv].[date_time]' />
+          <map key='[device_change]' value='[device_change_steps.csv].[device_change]' />
+          <map key='[gendr]' value='[df_final_expanded_limpio.csv].[gendr]' />
+          <map key='[logons_6_mnth]' value='[df_final_expanded_limpio.csv].[logons_6_mnth]' />
+          <map key='[num_accts]' value='[df_final_expanded_limpio.csv].[num_accts]' />
+          <map key='[process_step (device_change_steps.csv)]' value='[device_change_steps.csv].[process_step]' />
+          <map key='[process_step (step_change_counts.csv)]' value='[step_change_counts.csv].[process_step]' />
+          <map key='[process_step]' value='[df_web_data_combinado_limpio.csv].[process_step]' />
+          <map key='[total_tenure_months]' value='[df_final_expanded_limpio.csv].[total_tenure_months]' />
+          <map key='[visit_id (device_change_steps.csv)]' value='[device_change_steps.csv].[visit_id]' />
+          <map key='[visit_id]' value='[df_web_data_combinado_limpio.csv].[visit_id]' />
+          <map key='[visitor_id (device_change_steps.csv)]' value='[device_change_steps.csv].[visitor_id]' />
+          <map key='[visitor_id]' value='[df_web_data_combinado_limpio.csv].[visitor_id]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[df_web_data_combinado_limpio.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;€&quot;</attribute>
+              <attribute datatype='string' name='decimal-char'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;es_ES&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot;.&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[device_change_steps.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;€&quot;</attribute>
+              <attribute datatype='string' name='decimal-char'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;es_ES&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot;.&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[df_final_expanded_limpio.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;€&quot;</attribute>
+              <attribute datatype='string' name='decimal-char'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;es_ES&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot;.&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[step_change_counts.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;€&quot;</attribute>
+              <attribute datatype='string' name='decimal-char'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;es_ES&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot;.&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>client_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[client_id]</local-name>
+            <parent-name>[df_web_data_combinado_limpio.csv]</parent-name>
+            <remote-alias>client_id</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[df_web_data_combinado_limpio.csv_E83C97176AFA4925BCB325697BE13FF1]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>visitor_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[visitor_id]</local-name>
+            <parent-name>[df_web_data_combinado_limpio.csv]</parent-name>
+            <remote-alias>visitor_id</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[df_web_data_combinado_limpio.csv_E83C97176AFA4925BCB325697BE13FF1]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>visit_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[visit_id]</local-name>
+            <parent-name>[df_web_data_combinado_limpio.csv]</parent-name>
+            <remote-alias>visit_id</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[df_web_data_combinado_limpio.csv_E83C97176AFA4925BCB325697BE13FF1]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>process_step</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[process_step]</local-name>
+            <parent-name>[df_web_data_combinado_limpio.csv]</parent-name>
+            <remote-alias>process_step</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[df_web_data_combinado_limpio.csv_E83C97176AFA4925BCB325697BE13FF1]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>date_time</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[date_time]</local-name>
+            <parent-name>[df_web_data_combinado_limpio.csv]</parent-name>
+            <remote-alias>date_time</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[df_web_data_combinado_limpio.csv_E83C97176AFA4925BCB325697BE13FF1]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>client_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[client_id (device_change_steps.csv)]</local-name>
+            <parent-name>[device_change_steps.csv]</parent-name>
+            <remote-alias>client_id</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[device_change_steps.csv_97FB457CA47C491984BA76797EF7B48F]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>visitor_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[visitor_id (device_change_steps.csv)]</local-name>
+            <parent-name>[device_change_steps.csv]</parent-name>
+            <remote-alias>visitor_id</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[device_change_steps.csv_97FB457CA47C491984BA76797EF7B48F]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>visit_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[visit_id (device_change_steps.csv)]</local-name>
+            <parent-name>[device_change_steps.csv]</parent-name>
+            <remote-alias>visit_id</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[device_change_steps.csv_97FB457CA47C491984BA76797EF7B48F]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>process_step</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[process_step (device_change_steps.csv)]</local-name>
+            <parent-name>[device_change_steps.csv]</parent-name>
+            <remote-alias>process_step</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[device_change_steps.csv_97FB457CA47C491984BA76797EF7B48F]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>date_time</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[date_time (device_change_steps.csv)]</local-name>
+            <parent-name>[device_change_steps.csv]</parent-name>
+            <remote-alias>date_time</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[device_change_steps.csv_97FB457CA47C491984BA76797EF7B48F]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>device_change</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[device_change]</local-name>
+            <parent-name>[device_change_steps.csv]</parent-name>
+            <remote-alias>device_change</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[device_change_steps.csv_97FB457CA47C491984BA76797EF7B48F]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>client_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[client_id (df_final_expanded_limpio.csv)]</local-name>
+            <parent-name>[df_final_expanded_limpio.csv]</parent-name>
+            <remote-alias>client_id</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[df_final_expanded_limpio.csv_06697710C6154E889E76A5C5CD042D5C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>clnt_tenure_yr</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[clnt_tenure_yr]</local-name>
+            <parent-name>[df_final_expanded_limpio.csv]</parent-name>
+            <remote-alias>clnt_tenure_yr</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[df_final_expanded_limpio.csv_06697710C6154E889E76A5C5CD042D5C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>clnt_tenure_mnth</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[clnt_tenure_mnth]</local-name>
+            <parent-name>[df_final_expanded_limpio.csv]</parent-name>
+            <remote-alias>clnt_tenure_mnth</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[df_final_expanded_limpio.csv_06697710C6154E889E76A5C5CD042D5C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>clnt_age</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[clnt_age]</local-name>
+            <parent-name>[df_final_expanded_limpio.csv]</parent-name>
+            <remote-alias>clnt_age</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[df_final_expanded_limpio.csv_06697710C6154E889E76A5C5CD042D5C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>gendr</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[gendr]</local-name>
+            <parent-name>[df_final_expanded_limpio.csv]</parent-name>
+            <remote-alias>gendr</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[df_final_expanded_limpio.csv_06697710C6154E889E76A5C5CD042D5C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>num_accts</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[num_accts]</local-name>
+            <parent-name>[df_final_expanded_limpio.csv]</parent-name>
+            <remote-alias>num_accts</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[df_final_expanded_limpio.csv_06697710C6154E889E76A5C5CD042D5C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>bal</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[bal]</local-name>
+            <parent-name>[df_final_expanded_limpio.csv]</parent-name>
+            <remote-alias>bal</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[df_final_expanded_limpio.csv_06697710C6154E889E76A5C5CD042D5C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>calls_6_mnth</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[calls_6_mnth]</local-name>
+            <parent-name>[df_final_expanded_limpio.csv]</parent-name>
+            <remote-alias>calls_6_mnth</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[df_final_expanded_limpio.csv_06697710C6154E889E76A5C5CD042D5C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>logons_6_mnth</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[logons_6_mnth]</local-name>
+            <parent-name>[df_final_expanded_limpio.csv]</parent-name>
+            <remote-alias>logons_6_mnth</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[df_final_expanded_limpio.csv_06697710C6154E889E76A5C5CD042D5C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Variation</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Variation]</local-name>
+            <parent-name>[df_final_expanded_limpio.csv]</parent-name>
+            <remote-alias>Variation</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[df_final_expanded_limpio.csv_06697710C6154E889E76A5C5CD042D5C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_tenure_months</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[total_tenure_months]</local-name>
+            <parent-name>[df_final_expanded_limpio.csv]</parent-name>
+            <remote-alias>total_tenure_months</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[df_final_expanded_limpio.csv_06697710C6154E889E76A5C5CD042D5C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>process_step</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[process_step (step_change_counts.csv)]</local-name>
+            <parent-name>[step_change_counts.csv]</parent-name>
+            <remote-alias>process_step</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[step_change_counts.csv_DAEDB756856B42C4AECA2998EC4A073F]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>counts</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[counts]</local-name>
+            <parent-name>[step_change_counts.csv]</parent-name>
+            <remote-alias>counts</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[step_change_counts.csv_DAEDB756856B42C4AECA2998EC4A073F]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='device_change_steps.csv' datatype='table' name='[__tableau_internal_object_id__].[device_change_steps.csv_97FB457CA47C491984BA76797EF7B48F]' role='measure' type='quantitative' />
+      <column caption='df_final_expanded_limpio.csv' datatype='table' name='[__tableau_internal_object_id__].[df_final_expanded_limpio.csv_06697710C6154E889E76A5C5CD042D5C]' role='measure' type='quantitative' />
+      <column caption='df_web_data_combinado_limpio.csv' datatype='table' name='[__tableau_internal_object_id__].[df_web_data_combinado_limpio.csv_E83C97176AFA4925BCB325697BE13FF1]' role='measure' type='quantitative' />
+      <column caption='step_change_counts.csv' datatype='table' name='[__tableau_internal_object_id__].[step_change_counts.csv_DAEDB756856B42C4AECA2998EC4A073F]' role='measure' type='quantitative' />
+      <column caption='Bal' datatype='string' name='[bal]' role='dimension' type='nominal' />
+      <column caption='Calls 6 Mnth' datatype='integer' name='[calls_6_mnth]' role='measure' type='quantitative' />
+      <column caption='Client Id (Df Final Expanded Limpio.Csv)' datatype='integer' name='[client_id (df_final_expanded_limpio.csv)]' role='dimension' type='ordinal' />
+      <column caption='Clnt Age' datatype='integer' name='[clnt_age]' role='measure' type='quantitative' />
+      <column caption='Clnt Tenure Mnth' datatype='integer' name='[clnt_tenure_mnth]' role='measure' type='quantitative' />
+      <column caption='Clnt Tenure Yr' datatype='integer' name='[clnt_tenure_yr]' role='dimension' type='quantitative' />
+      <column caption='Gendr' datatype='string' name='[gendr]' role='dimension' type='nominal' />
+      <column caption='Logons 6 Mnth' datatype='integer' name='[logons_6_mnth]' role='measure' type='quantitative' />
+      <column caption='Num Accts' datatype='integer' name='[num_accts]' role='measure' type='quantitative' />
+      <column caption='Total Tenure Months' datatype='integer' name='[total_tenure_months]' role='measure' type='quantitative' />
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;España&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+      <object-graph>
+        <objects>
+          <object caption='device_change_steps.csv' id='device_change_steps.csv_97FB457CA47C491984BA76797EF7B48F'>
+            <properties context=''>
+              <relation connection='textscan.1hqrn431xddx201ccuv4d17usqin' name='device_change_steps.csv' table='[device_change_steps#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='es_ES' separator=','>
+                  <column datatype='integer' name='client_id' ordinal='0' />
+                  <column datatype='string' name='visitor_id' ordinal='1' />
+                  <column datatype='string' name='visit_id' ordinal='2' />
+                  <column datatype='string' name='process_step' ordinal='3' />
+                  <column datatype='datetime' name='date_time' ordinal='4' />
+                  <column datatype='boolean' name='device_change' ordinal='5' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+          <object caption='df_final_expanded_limpio.csv' id='df_final_expanded_limpio.csv_06697710C6154E889E76A5C5CD042D5C'>
+            <properties context=''>
+              <relation connection='textscan.1hqrn431xddx201ccuv4d17usqin' name='df_final_expanded_limpio.csv' table='[df_final_expanded_limpio#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='es_ES'>
+                  <column datatype='integer' name='client_id' ordinal='0' />
+                  <column datatype='integer' name='clnt_tenure_yr' ordinal='1' />
+                  <column datatype='integer' name='clnt_tenure_mnth' ordinal='2' />
+                  <column datatype='integer' name='clnt_age' ordinal='3' />
+                  <column datatype='string' name='gendr' ordinal='4' />
+                  <column datatype='integer' name='num_accts' ordinal='5' />
+                  <column datatype='string' name='bal' ordinal='6' />
+                  <column datatype='integer' name='calls_6_mnth' ordinal='7' />
+                  <column datatype='integer' name='logons_6_mnth' ordinal='8' />
+                  <column datatype='string' name='Variation' ordinal='9' />
+                  <column datatype='integer' name='total_tenure_months' ordinal='10' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+          <object caption='df_web_data_combinado_limpio.csv' id='df_web_data_combinado_limpio.csv_E83C97176AFA4925BCB325697BE13FF1'>
+            <properties context=''>
+              <relation connection='textscan.1hqrn431xddx201ccuv4d17usqin' name='df_web_data_combinado_limpio.csv' table='[df_web_data_combinado_limpio#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='es_ES' separator=','>
+                  <column datatype='integer' name='client_id' ordinal='0' />
+                  <column datatype='string' name='visitor_id' ordinal='1' />
+                  <column datatype='string' name='visit_id' ordinal='2' />
+                  <column datatype='string' name='process_step' ordinal='3' />
+                  <column datatype='datetime' name='date_time' ordinal='4' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+          <object caption='step_change_counts.csv' id='step_change_counts.csv_DAEDB756856B42C4AECA2998EC4A073F'>
+            <properties context=''>
+              <relation connection='textscan.1hqrn431xddx201ccuv4d17usqin' name='step_change_counts.csv' table='[step_change_counts#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='es_ES' separator=','>
+                  <column datatype='string' name='process_step' ordinal='0' />
+                  <column datatype='integer' name='counts' ordinal='1' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+        <relationships>
+          <relationship>
+            <expression op='='>
+              <expression op='[client_id]' />
+              <expression op='[client_id (device_change_steps.csv)]' />
+            </expression>
+            <first-end-point object-id='df_web_data_combinado_limpio.csv_E83C97176AFA4925BCB325697BE13FF1' />
+            <second-end-point object-id='device_change_steps.csv_97FB457CA47C491984BA76797EF7B48F' />
+          </relationship>
+          <relationship>
+            <expression op='='>
+              <expression op='[client_id]' />
+              <expression op='[client_id (df_final_expanded_limpio.csv)]' />
+            </expression>
+            <first-end-point object-id='df_web_data_combinado_limpio.csv_E83C97176AFA4925BCB325697BE13FF1' />
+            <second-end-point object-id='df_final_expanded_limpio.csv_06697710C6154E889E76A5C5CD042D5C' />
+          </relationship>
+          <relationship>
+            <expression op='='>
+              <expression op='[process_step]' />
+              <expression op='[process_step (step_change_counts.csv)]' />
+            </expression>
+            <first-end-point object-id='df_web_data_combinado_limpio.csv_E83C97176AFA4925BCB325697BE13FF1' />
+            <second-end-point object-id='step_change_counts.csv_DAEDB756856B42C4AECA2998EC4A073F' />
+          </relationship>
+        </relationships>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Hoja 1'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='VANGUARD' name='federated.15chz0t057kni115xhj7q1wopg56' />
+          </datasources>
+          <datasource-dependencies datasource='federated.15chz0t057kni115xhj7q1wopg56'>
+            <column-instance column='[process_step]' derivation='None' name='[none:process_step:nk]' pivot='key' type='nominal' />
+            <column datatype='string' name='[process_step]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.15chz0t057kni115xhj7q1wopg56].[none:process_step:nk]'>
+            <groupfilter function='union' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='member' level='[none:process_step:nk]' member='&quot;confirm&quot;' />
+              <groupfilter function='member' level='[none:process_step:nk]' member='&quot;start&quot;' />
+              <groupfilter function='member' level='[none:process_step:nk]' member='&quot;step_1&quot;' />
+              <groupfilter function='member' level='[none:process_step:nk]' member='&quot;step_2&quot;' />
+              <groupfilter function='member' level='[none:process_step:nk]' member='&quot;step_3&quot;' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.15chz0t057kni115xhj7q1wopg56].[none:process_step:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{EDE478AC-7598-482C-8429-A89E9BA8A4CA}' />
+    </worksheet>
+    <worksheet name='Hoja 2'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='VANGUARD' name='federated.15chz0t057kni115xhj7q1wopg56' />
+          </datasources>
+          <datasource-dependencies datasource='federated.15chz0t057kni115xhj7q1wopg56'>
+            <column datatype='integer' name='[counts]' role='measure' type='quantitative' />
+            <column-instance column='[process_step (step_change_counts.csv)]' derivation='None' name='[none:process_step (step_change_counts.csv):nk]' pivot='key' type='nominal' />
+            <column datatype='string' name='[process_step (step_change_counts.csv)]' role='dimension' type='nominal' />
+            <column-instance column='[counts]' derivation='Sum' name='[sum:counts:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.15chz0t057kni115xhj7q1wopg56].[none:process_step (step_change_counts.csv):nk]'>
+            <groupfilter function='union' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='member' level='[none:process_step (step_change_counts.csv):nk]' member='&quot;confirm&quot;' />
+              <groupfilter function='member' level='[none:process_step (step_change_counts.csv):nk]' member='&quot;start&quot;' />
+              <groupfilter function='member' level='[none:process_step (step_change_counts.csv):nk]' member='&quot;step_1&quot;' />
+              <groupfilter function='member' level='[none:process_step (step_change_counts.csv):nk]' member='&quot;step_2&quot;' />
+              <groupfilter function='member' level='[none:process_step (step_change_counts.csv):nk]' member='&quot;step_3&quot;' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.15chz0t057kni115xhj7q1wopg56].[none:process_step (step_change_counts.csv):nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='label'>
+            <format attr='text-orientation' field='[federated.15chz0t057kni115xhj7q1wopg56].[none:process_step (step_change_counts.csv):nk]' value='0' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='size-bar' field='[federated.15chz0t057kni115xhj7q1wopg56].[sum:counts:qk]' field-type='quantitative' max-size='1' min-size='0.005' type='centersize' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.15chz0t057kni115xhj7q1wopg56].[sum:counts:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.15chz0t057kni115xhj7q1wopg56].[none:process_step (step_change_counts.csv):nk]</rows>
+        <cols />
+      </table>
+      <simple-id uuid='{D754276B-FCCA-4ED1-AF95-00A78EF78EBF}' />
+    </worksheet>
+  </worksheets>
+  <windows source-height='30'>
+    <window class='worksheet' maximized='true' name='Hoja 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{68FB2D83-1E1D-4C28-9AF5-653E09AF30F9}' />
+    </window>
+    <window class='worksheet' name='Hoja 2'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.15chz0t057kni115xhj7q1wopg56].[none:process_step (step_change_counts.csv):nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{792C5986-6413-49FD-AB25-8BC7ACF899D1}' />
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='384' name='Hoja 1' width='384'>
+      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
+    </thumbnail>
+    <thumbnail height='248' name='Hoja 2' width='288'>
+      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
+    </thumbnail>
+  </thumbnails>
+</workbook>
