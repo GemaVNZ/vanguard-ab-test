@@ -1,0 +1,791 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20243.24.1112.0850                               -->
+<workbook original-version='18.1' source-build='2024.3.1 (20243.24.1112.0850)' source-platform='mac' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AnimationOnByDefault />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
+    <SheetIdentifierTracking />
+    <SortTagCleanup />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='VANGUARD' inline='true' name='federated.15chz0t057kni115xhj7q1wopg56' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='df_web_data_combinado_limpio' name='textscan.1hqrn431xddx201ccuv4d17usqin'>
+            <connection class='textscan' directory='/Users/monzon8/Documents/Ironhack/PROYECTOS/05_EDA/vanguard-ab-test/02_DATA_LIMPIO' filename='df_web_data_combinado_limpio.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation type='collection'>
+          <relation connection='textscan.1hqrn431xddx201ccuv4d17usqin' name='df_web_data_combinado_limpio.csv' table='[df_web_data_combinado_limpio#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='es_ES' separator=','>
+              <column datatype='integer' name='client_id' ordinal='0' />
+              <column datatype='string' name='visitor_id' ordinal='1' />
+              <column datatype='string' name='visit_id' ordinal='2' />
+              <column datatype='string' name='process_step' ordinal='3' />
+              <column datatype='datetime' name='date_time' ordinal='4' />
+            </columns>
+          </relation>
+          <relation connection='textscan.1hqrn431xddx201ccuv4d17usqin' name='device_change_steps.csv' table='[device_change_steps#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='es_ES' separator=','>
+              <column datatype='integer' name='client_id' ordinal='0' />
+              <column datatype='string' name='visitor_id' ordinal='1' />
+              <column datatype='string' name='visit_id' ordinal='2' />
+              <column datatype='string' name='process_step' ordinal='3' />
+              <column datatype='datetime' name='date_time' ordinal='4' />
+              <column datatype='boolean' name='device_change' ordinal='5' />
+            </columns>
+          </relation>
+          <relation connection='textscan.1hqrn431xddx201ccuv4d17usqin' name='df_final_expanded_limpio.csv' table='[df_final_expanded_limpio#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='es_ES'>
+              <column datatype='integer' name='client_id' ordinal='0' />
+              <column datatype='integer' name='clnt_tenure_yr' ordinal='1' />
+              <column datatype='integer' name='clnt_tenure_mnth' ordinal='2' />
+              <column datatype='integer' name='clnt_age' ordinal='3' />
+              <column datatype='string' name='gendr' ordinal='4' />
+              <column datatype='integer' name='num_accts' ordinal='5' />
+              <column datatype='string' name='bal' ordinal='6' />
+              <column datatype='integer' name='calls_6_mnth' ordinal='7' />
+              <column datatype='integer' name='logons_6_mnth' ordinal='8' />
+              <column datatype='string' name='Variation' ordinal='9' />
+              <column datatype='integer' name='total_tenure_months' ordinal='10' />
+            </columns>
+          </relation>
+          <relation connection='textscan.1hqrn431xddx201ccuv4d17usqin' name='step_change_counts.csv' table='[step_change_counts#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='es_ES' separator=','>
+              <column datatype='string' name='process_step' ordinal='0' />
+              <column datatype='integer' name='counts' ordinal='1' />
+            </columns>
+          </relation>
+        </relation>
+        <cols>
+          <map key='[Variation]' value='[df_final_expanded_limpio.csv].[Variation]' />
+          <map key='[bal]' value='[df_final_expanded_limpio.csv].[bal]' />
+          <map key='[calls_6_mnth]' value='[df_final_expanded_limpio.csv].[calls_6_mnth]' />
+          <map key='[client_id (device_change_steps.csv)]' value='[device_change_steps.csv].[client_id]' />
+          <map key='[client_id (df_final_expanded_limpio.csv)]' value='[df_final_expanded_limpio.csv].[client_id]' />
+          <map key='[client_id]' value='[df_web_data_combinado_limpio.csv].[client_id]' />
+          <map key='[clnt_age]' value='[df_final_expanded_limpio.csv].[clnt_age]' />
+          <map key='[clnt_tenure_mnth]' value='[df_final_expanded_limpio.csv].[clnt_tenure_mnth]' />
+          <map key='[clnt_tenure_yr]' value='[df_final_expanded_limpio.csv].[clnt_tenure_yr]' />
+          <map key='[counts]' value='[step_change_counts.csv].[counts]' />
+          <map key='[date_time (device_change_steps.csv)]' value='[device_change_steps.csv].[date_time]' />
+          <map key='[date_time]' value='[df_web_data_combinado_limpio.csv].[date_time]' />
+          <map key='[device_change]' value='[device_change_steps.csv].[device_change]' />
+          <map key='[gendr]' value='[df_final_expanded_limpio.csv].[gendr]' />
+          <map key='[logons_6_mnth]' value='[df_final_expanded_limpio.csv].[logons_6_mnth]' />
+          <map key='[num_accts]' value='[df_final_expanded_limpio.csv].[num_accts]' />
+          <map key='[process_step (device_change_steps.csv)]' value='[device_change_steps.csv].[process_step]' />
+          <map key='[process_step (step_change_counts.csv)]' value='[step_change_counts.csv].[process_step]' />
+          <map key='[process_step]' value='[df_web_data_combinado_limpio.csv].[process_step]' />
+          <map key='[total_tenure_months]' value='[df_final_expanded_limpio.csv].[total_tenure_months]' />
+          <map key='[visit_id (device_change_steps.csv)]' value='[device_change_steps.csv].[visit_id]' />
+          <map key='[visit_id]' value='[df_web_data_combinado_limpio.csv].[visit_id]' />
+          <map key='[visitor_id (device_change_steps.csv)]' value='[device_change_steps.csv].[visitor_id]' />
+          <map key='[visitor_id]' value='[df_web_data_combinado_limpio.csv].[visitor_id]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[df_web_data_combinado_limpio.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;€&quot;</attribute>
+              <attribute datatype='string' name='decimal-char'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;es_ES&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot;.&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[device_change_steps.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;€&quot;</attribute>
+              <attribute datatype='string' name='decimal-char'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;es_ES&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot;.&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[df_final_expanded_limpio.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;€&quot;</attribute>
+              <attribute datatype='string' name='decimal-char'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;es_ES&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot;.&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[step_change_counts.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;€&quot;</attribute>
+              <attribute datatype='string' name='decimal-char'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;es_ES&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot;.&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>client_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[client_id]</local-name>
+            <parent-name>[df_web_data_combinado_limpio.csv]</parent-name>
+            <remote-alias>client_id</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[df_web_data_combinado_limpio.csv_E83C97176AFA4925BCB325697BE13FF1]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>visitor_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[visitor_id]</local-name>
+            <parent-name>[df_web_data_combinado_limpio.csv]</parent-name>
+            <remote-alias>visitor_id</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[df_web_data_combinado_limpio.csv_E83C97176AFA4925BCB325697BE13FF1]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>visit_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[visit_id]</local-name>
+            <parent-name>[df_web_data_combinado_limpio.csv]</parent-name>
+            <remote-alias>visit_id</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[df_web_data_combinado_limpio.csv_E83C97176AFA4925BCB325697BE13FF1]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>process_step</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[process_step]</local-name>
+            <parent-name>[df_web_data_combinado_limpio.csv]</parent-name>
+            <remote-alias>process_step</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[df_web_data_combinado_limpio.csv_E83C97176AFA4925BCB325697BE13FF1]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>date_time</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[date_time]</local-name>
+            <parent-name>[df_web_data_combinado_limpio.csv]</parent-name>
+            <remote-alias>date_time</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[df_web_data_combinado_limpio.csv_E83C97176AFA4925BCB325697BE13FF1]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>client_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[client_id (device_change_steps.csv)]</local-name>
+            <parent-name>[device_change_steps.csv]</parent-name>
+            <remote-alias>client_id</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[device_change_steps.csv_97FB457CA47C491984BA76797EF7B48F]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>visitor_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[visitor_id (device_change_steps.csv)]</local-name>
+            <parent-name>[device_change_steps.csv]</parent-name>
+            <remote-alias>visitor_id</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[device_change_steps.csv_97FB457CA47C491984BA76797EF7B48F]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>visit_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[visit_id (device_change_steps.csv)]</local-name>
+            <parent-name>[device_change_steps.csv]</parent-name>
+            <remote-alias>visit_id</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[device_change_steps.csv_97FB457CA47C491984BA76797EF7B48F]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>process_step</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[process_step (device_change_steps.csv)]</local-name>
+            <parent-name>[device_change_steps.csv]</parent-name>
+            <remote-alias>process_step</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[device_change_steps.csv_97FB457CA47C491984BA76797EF7B48F]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>date_time</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[date_time (device_change_steps.csv)]</local-name>
+            <parent-name>[device_change_steps.csv]</parent-name>
+            <remote-alias>date_time</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[device_change_steps.csv_97FB457CA47C491984BA76797EF7B48F]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>device_change</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[device_change]</local-name>
+            <parent-name>[device_change_steps.csv]</parent-name>
+            <remote-alias>device_change</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[device_change_steps.csv_97FB457CA47C491984BA76797EF7B48F]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>client_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[client_id (df_final_expanded_limpio.csv)]</local-name>
+            <parent-name>[df_final_expanded_limpio.csv]</parent-name>
+            <remote-alias>client_id</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[df_final_expanded_limpio.csv_06697710C6154E889E76A5C5CD042D5C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>clnt_tenure_yr</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[clnt_tenure_yr]</local-name>
+            <parent-name>[df_final_expanded_limpio.csv]</parent-name>
+            <remote-alias>clnt_tenure_yr</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[df_final_expanded_limpio.csv_06697710C6154E889E76A5C5CD042D5C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>clnt_tenure_mnth</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[clnt_tenure_mnth]</local-name>
+            <parent-name>[df_final_expanded_limpio.csv]</parent-name>
+            <remote-alias>clnt_tenure_mnth</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[df_final_expanded_limpio.csv_06697710C6154E889E76A5C5CD042D5C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>clnt_age</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[clnt_age]</local-name>
+            <parent-name>[df_final_expanded_limpio.csv]</parent-name>
+            <remote-alias>clnt_age</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[df_final_expanded_limpio.csv_06697710C6154E889E76A5C5CD042D5C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>gendr</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[gendr]</local-name>
+            <parent-name>[df_final_expanded_limpio.csv]</parent-name>
+            <remote-alias>gendr</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[df_final_expanded_limpio.csv_06697710C6154E889E76A5C5CD042D5C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>num_accts</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[num_accts]</local-name>
+            <parent-name>[df_final_expanded_limpio.csv]</parent-name>
+            <remote-alias>num_accts</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[df_final_expanded_limpio.csv_06697710C6154E889E76A5C5CD042D5C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>bal</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[bal]</local-name>
+            <parent-name>[df_final_expanded_limpio.csv]</parent-name>
+            <remote-alias>bal</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[df_final_expanded_limpio.csv_06697710C6154E889E76A5C5CD042D5C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>calls_6_mnth</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[calls_6_mnth]</local-name>
+            <parent-name>[df_final_expanded_limpio.csv]</parent-name>
+            <remote-alias>calls_6_mnth</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[df_final_expanded_limpio.csv_06697710C6154E889E76A5C5CD042D5C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>logons_6_mnth</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[logons_6_mnth]</local-name>
+            <parent-name>[df_final_expanded_limpio.csv]</parent-name>
+            <remote-alias>logons_6_mnth</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[df_final_expanded_limpio.csv_06697710C6154E889E76A5C5CD042D5C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Variation</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Variation]</local-name>
+            <parent-name>[df_final_expanded_limpio.csv]</parent-name>
+            <remote-alias>Variation</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[df_final_expanded_limpio.csv_06697710C6154E889E76A5C5CD042D5C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_tenure_months</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[total_tenure_months]</local-name>
+            <parent-name>[df_final_expanded_limpio.csv]</parent-name>
+            <remote-alias>total_tenure_months</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[df_final_expanded_limpio.csv_06697710C6154E889E76A5C5CD042D5C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>process_step</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[process_step (step_change_counts.csv)]</local-name>
+            <parent-name>[step_change_counts.csv]</parent-name>
+            <remote-alias>process_step</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[step_change_counts.csv_DAEDB756856B42C4AECA2998EC4A073F]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>counts</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[counts]</local-name>
+            <parent-name>[step_change_counts.csv]</parent-name>
+            <remote-alias>counts</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[step_change_counts.csv_DAEDB756856B42C4AECA2998EC4A073F]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='device_change_steps.csv' datatype='table' name='[__tableau_internal_object_id__].[device_change_steps.csv_97FB457CA47C491984BA76797EF7B48F]' role='measure' type='quantitative' />
+      <column caption='df_final_expanded_limpio.csv' datatype='table' name='[__tableau_internal_object_id__].[df_final_expanded_limpio.csv_06697710C6154E889E76A5C5CD042D5C]' role='measure' type='quantitative' />
+      <column caption='df_web_data_combinado_limpio.csv' datatype='table' name='[__tableau_internal_object_id__].[df_web_data_combinado_limpio.csv_E83C97176AFA4925BCB325697BE13FF1]' role='measure' type='quantitative' />
+      <column caption='step_change_counts.csv' datatype='table' name='[__tableau_internal_object_id__].[step_change_counts.csv_DAEDB756856B42C4AECA2998EC4A073F]' role='measure' type='quantitative' />
+      <column caption='Bal' datatype='string' name='[bal]' role='dimension' type='nominal' />
+      <column caption='Calls 6 Mnth' datatype='integer' name='[calls_6_mnth]' role='measure' type='quantitative' />
+      <column caption='Client Id (Df Final Expanded Limpio.Csv)' datatype='integer' name='[client_id (df_final_expanded_limpio.csv)]' role='dimension' type='ordinal' />
+      <column caption='Clnt Age' datatype='integer' name='[clnt_age]' role='measure' type='quantitative' />
+      <column caption='Clnt Tenure Mnth' datatype='integer' name='[clnt_tenure_mnth]' role='measure' type='quantitative' />
+      <column caption='Clnt Tenure Yr' datatype='integer' name='[clnt_tenure_yr]' role='dimension' type='quantitative' />
+      <column caption='Gendr' datatype='string' name='[gendr]' role='dimension' type='nominal' />
+      <column caption='Logons 6 Mnth' datatype='integer' name='[logons_6_mnth]' role='measure' type='quantitative' />
+      <column caption='Num Accts' datatype='integer' name='[num_accts]' role='measure' type='quantitative' />
+      <column caption='Total Tenure Months' datatype='integer' name='[total_tenure_months]' role='measure' type='quantitative' />
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;España&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+      <object-graph>
+        <objects>
+          <object caption='device_change_steps.csv' id='device_change_steps.csv_97FB457CA47C491984BA76797EF7B48F'>
+            <properties context=''>
+              <relation connection='textscan.1hqrn431xddx201ccuv4d17usqin' name='device_change_steps.csv' table='[device_change_steps#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='es_ES' separator=','>
+                  <column datatype='integer' name='client_id' ordinal='0' />
+                  <column datatype='string' name='visitor_id' ordinal='1' />
+                  <column datatype='string' name='visit_id' ordinal='2' />
+                  <column datatype='string' name='process_step' ordinal='3' />
+                  <column datatype='datetime' name='date_time' ordinal='4' />
+                  <column datatype='boolean' name='device_change' ordinal='5' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+          <object caption='df_final_expanded_limpio.csv' id='df_final_expanded_limpio.csv_06697710C6154E889E76A5C5CD042D5C'>
+            <properties context=''>
+              <relation connection='textscan.1hqrn431xddx201ccuv4d17usqin' name='df_final_expanded_limpio.csv' table='[df_final_expanded_limpio#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='es_ES'>
+                  <column datatype='integer' name='client_id' ordinal='0' />
+                  <column datatype='integer' name='clnt_tenure_yr' ordinal='1' />
+                  <column datatype='integer' name='clnt_tenure_mnth' ordinal='2' />
+                  <column datatype='integer' name='clnt_age' ordinal='3' />
+                  <column datatype='string' name='gendr' ordinal='4' />
+                  <column datatype='integer' name='num_accts' ordinal='5' />
+                  <column datatype='string' name='bal' ordinal='6' />
+                  <column datatype='integer' name='calls_6_mnth' ordinal='7' />
+                  <column datatype='integer' name='logons_6_mnth' ordinal='8' />
+                  <column datatype='string' name='Variation' ordinal='9' />
+                  <column datatype='integer' name='total_tenure_months' ordinal='10' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+          <object caption='df_web_data_combinado_limpio.csv' id='df_web_data_combinado_limpio.csv_E83C97176AFA4925BCB325697BE13FF1'>
+            <properties context=''>
+              <relation connection='textscan.1hqrn431xddx201ccuv4d17usqin' name='df_web_data_combinado_limpio.csv' table='[df_web_data_combinado_limpio#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='es_ES' separator=','>
+                  <column datatype='integer' name='client_id' ordinal='0' />
+                  <column datatype='string' name='visitor_id' ordinal='1' />
+                  <column datatype='string' name='visit_id' ordinal='2' />
+                  <column datatype='string' name='process_step' ordinal='3' />
+                  <column datatype='datetime' name='date_time' ordinal='4' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+          <object caption='step_change_counts.csv' id='step_change_counts.csv_DAEDB756856B42C4AECA2998EC4A073F'>
+            <properties context=''>
+              <relation connection='textscan.1hqrn431xddx201ccuv4d17usqin' name='step_change_counts.csv' table='[step_change_counts#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='es_ES' separator=','>
+                  <column datatype='string' name='process_step' ordinal='0' />
+                  <column datatype='integer' name='counts' ordinal='1' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+        <relationships>
+          <relationship>
+            <expression op='='>
+              <expression op='[client_id]' />
+              <expression op='[client_id (device_change_steps.csv)]' />
+            </expression>
+            <first-end-point object-id='df_web_data_combinado_limpio.csv_E83C97176AFA4925BCB325697BE13FF1' />
+            <second-end-point object-id='device_change_steps.csv_97FB457CA47C491984BA76797EF7B48F' />
+          </relationship>
+          <relationship>
+            <expression op='='>
+              <expression op='[client_id]' />
+              <expression op='[client_id (df_final_expanded_limpio.csv)]' />
+            </expression>
+            <first-end-point object-id='df_web_data_combinado_limpio.csv_E83C97176AFA4925BCB325697BE13FF1' />
+            <second-end-point object-id='df_final_expanded_limpio.csv_06697710C6154E889E76A5C5CD042D5C' />
+          </relationship>
+          <relationship>
+            <expression op='='>
+              <expression op='[process_step]' />
+              <expression op='[process_step (step_change_counts.csv)]' />
+            </expression>
+            <first-end-point object-id='df_web_data_combinado_limpio.csv_E83C97176AFA4925BCB325697BE13FF1' />
+            <second-end-point object-id='step_change_counts.csv_DAEDB756856B42C4AECA2998EC4A073F' />
+          </relationship>
+        </relationships>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Conteo Cambio'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Conteo Cambio</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='VANGUARD' name='federated.15chz0t057kni115xhj7q1wopg56' />
+          </datasources>
+          <datasource-dependencies datasource='federated.15chz0t057kni115xhj7q1wopg56'>
+            <column datatype='integer' name='[counts]' role='measure' type='quantitative' />
+            <column-instance column='[process_step (step_change_counts.csv)]' derivation='None' name='[none:process_step (step_change_counts.csv):nk]' pivot='key' type='nominal' />
+            <column datatype='string' name='[process_step (step_change_counts.csv)]' role='dimension' type='nominal' />
+            <column-instance column='[counts]' derivation='Sum' name='[sum:counts:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.15chz0t057kni115xhj7q1wopg56].[none:process_step (step_change_counts.csv):nk]'>
+            <groupfilter function='union' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='member' level='[none:process_step (step_change_counts.csv):nk]' member='&quot;confirm&quot;' />
+              <groupfilter function='member' level='[none:process_step (step_change_counts.csv):nk]' member='&quot;start&quot;' />
+              <groupfilter function='member' level='[none:process_step (step_change_counts.csv):nk]' member='&quot;step_1&quot;' />
+              <groupfilter function='member' level='[none:process_step (step_change_counts.csv):nk]' member='&quot;step_2&quot;' />
+              <groupfilter function='member' level='[none:process_step (step_change_counts.csv):nk]' member='&quot;step_3&quot;' />
+            </groupfilter>
+          </filter>
+          <natural-sort column='[federated.15chz0t057kni115xhj7q1wopg56].[none:process_step (step_change_counts.csv):nk]' direction='ASC' />
+          <slices>
+            <column>[federated.15chz0t057kni115xhj7q1wopg56].[none:process_step (step_change_counts.csv):nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='label'>
+            <format attr='text-orientation' field='[federated.15chz0t057kni115xhj7q1wopg56].[none:process_step (step_change_counts.csv):nk]' value='0' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='size-bar' field='[federated.15chz0t057kni115xhj7q1wopg56].[sum:counts:qk]' field-type='quantitative' max-size='1' min-size='0.005' type='centersize' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.15chz0t057kni115xhj7q1wopg56].[sum:counts:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.15chz0t057kni115xhj7q1wopg56].[none:process_step (step_change_counts.csv):nk]</rows>
+        <cols />
+      </table>
+      <simple-id uuid='{D754276B-FCCA-4ED1-AF95-00A78EF78EBF}' />
+    </worksheet>
+    <worksheet name='Hoja 1'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='VANGUARD' name='federated.15chz0t057kni115xhj7q1wopg56' />
+          </datasources>
+          <datasource-dependencies datasource='federated.15chz0t057kni115xhj7q1wopg56'>
+            <column-instance column='[visitor_id (device_change_steps.csv)]' derivation='Count' name='[cnt:visitor_id (device_change_steps.csv):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[process_step (device_change_steps.csv)]' derivation='None' name='[none:process_step (device_change_steps.csv):nk]' pivot='key' type='nominal' />
+            <column datatype='string' name='[process_step (device_change_steps.csv)]' role='dimension' type='nominal' />
+            <column datatype='string' name='[visitor_id (device_change_steps.csv)]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[federated.15chz0t057kni115xhj7q1wopg56].[cnt:visitor_id (device_change_steps.csv):qk]</rows>
+        <cols>[federated.15chz0t057kni115xhj7q1wopg56].[none:process_step (device_change_steps.csv):nk]</cols>
+      </table>
+      <simple-id uuid='{EDE478AC-7598-482C-8429-A89E9BA8A4CA}' />
+    </worksheet>
+    <worksheet name='Hoja 3'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='VANGUARD' name='federated.15chz0t057kni115xhj7q1wopg56' />
+          </datasources>
+          <datasource-dependencies datasource='federated.15chz0t057kni115xhj7q1wopg56'>
+            <column datatype='integer' name='[counts]' role='measure' type='quantitative' />
+            <column-instance column='[process_step (step_change_counts.csv)]' derivation='None' name='[none:process_step (step_change_counts.csv):nk]' pivot='key' type='nominal' />
+            <column datatype='string' name='[process_step (step_change_counts.csv)]' role='dimension' type='nominal' />
+            <column-instance column='[counts]' derivation='Sum' name='[sum:counts:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[federated.15chz0t057kni115xhj7q1wopg56].[none:process_step (step_change_counts.csv):nk]</rows>
+        <cols>[federated.15chz0t057kni115xhj7q1wopg56].[sum:counts:qk]</cols>
+      </table>
+      <simple-id uuid='{313A1E0F-5F59-45E9-81D9-44F1DB7FF28E}' />
+    </worksheet>
+  </worksheets>
+  <windows source-height='30'>
+    <window class='worksheet' name='Hoja 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{68FB2D83-1E1D-4C28-9AF5-653E09AF30F9}' />
+    </window>
+    <window class='worksheet' name='Conteo Cambio'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{792C5986-6413-49FD-AB25-8BC7ACF899D1}' />
+    </window>
+    <window class='worksheet' maximized='true' name='Hoja 3'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{8420609C-1810-42D8-A19C-9201D001ADAB}' />
+    </window>
+  </windows>
+</workbook>
